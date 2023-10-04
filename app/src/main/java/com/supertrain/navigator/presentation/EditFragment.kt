@@ -6,8 +6,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.supertrain.navigator.R
+import com.supertrain.navigator.presentation.base.BaseScreen
 
-class FragmentEdit : Fragment() {
+class EditFragment : Fragment() {
+
+    class Screen(
+        val initialValue : String
+    ) : BaseScreen
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

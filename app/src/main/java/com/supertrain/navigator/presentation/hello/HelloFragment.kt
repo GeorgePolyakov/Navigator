@@ -1,4 +1,4 @@
-package com.supertrain.navigator.presentation
+package com.supertrain.navigator.presentation.hello
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,8 +7,12 @@ import android.view.View
 import android.view.ViewGroup
 import com.supertrain.navigator.R
 import com.supertrain.navigator.databinding.FragmentHelloBinding
+import com.supertrain.navigator.presentation.EditFragment
+import com.supertrain.navigator.presentation.base.BaseScreen
 
 class HelloFragment : Fragment() {
+
+    class Screen : BaseScreen
 
     private var binding:FragmentHelloBinding?= null
 
@@ -29,7 +33,7 @@ class HelloFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding?.editButton?.setOnClickListener {
             parentFragmentManager.beginTransaction()
-                .replace(R.id.fragmentContainer, FragmentEdit())
+                .replace(R.id.fragmentContainer, EditFragment())
                 .commit()
         }
     }

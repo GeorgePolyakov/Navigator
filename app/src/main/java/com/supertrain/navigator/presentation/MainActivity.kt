@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.supertrain.navigator.R
 import com.supertrain.navigator.databinding.ActivityMainBinding
+import com.supertrain.navigator.presentation.hello.HelloFragment
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -14,7 +15,7 @@ class MainActivity : AppCompatActivity() {
             supportFragmentManager
                 .beginTransaction()
                 .addToBackStack("")
-                .add(R.id.fragmentContainer,HelloFragment())
+                .add(R.id.fragmentContainer, HelloFragment())
                 .commit()
         }
     }
