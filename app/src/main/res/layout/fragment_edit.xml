@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white"
     tools:context=".presentation.FragmentEdit">
 
     <com.google.android.material.textfield.TextInputLayout
@@ -31,7 +32,7 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/saveButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -50,7 +51,9 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:text="@string/fragment_edit_cancel_button"
-        style="@style/FragmentButtonsStyle"
+        android:textColor="@color/black"
+        android:backgroundTint="@color/white"
+        android:layout_marginTop="8dp"
         app:layout_constraintTop_toBottomOf="@+id/valueTextInput"
         app:layout_constraintEnd_toEndOf="@+id/valueTextInput"
         app:layout_constraintStart_toEndOf="@+id/saveButton"
