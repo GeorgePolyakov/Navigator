@@ -3,7 +3,7 @@ package com.supertrain.navigator.presentation.hello
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.supertrain.navigator.R
-import com.supertrain.navigator.presentation.EditFragment
+import com.supertrain.navigator.presentation.edit.EditFragment
 import com.supertrain.navigator.presentation.Navigator
 import com.supertrain.navigator.presentation.base.BaseViewModel
 

@@ -7,4 +7,5 @@
     <string name="fragment_edit_save_button">Save</string>
     <string name="fragment_edit_cancel_button">Cancel</string>
     <string name="hello_world">Hello World</string>
+    <string name="message_must_not_be_empty">Message must not be empty</string>
 </resources>

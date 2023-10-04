@@ -1,4 +1,4 @@
-package com.supertrain.navigator.presentation
+package com.supertrain.navigator.presentation.edit
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

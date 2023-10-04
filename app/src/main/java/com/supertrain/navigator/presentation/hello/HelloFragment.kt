@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.supertrain.navigator.R
 import com.supertrain.navigator.databinding.FragmentHelloBinding
-import com.supertrain.navigator.presentation.EditFragment
+import com.supertrain.navigator.presentation.edit.EditFragment
 import com.supertrain.navigator.presentation.base.BaseScreen
 
 class HelloFragment : Fragment() {
