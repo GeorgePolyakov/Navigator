@@ -6,7 +6,6 @@ import com.supertrain.navigator.R
 import com.supertrain.navigator.presentation.Event
 import com.supertrain.navigator.presentation.Navigator
 import com.supertrain.navigator.presentation.base.BaseViewModel
-import com.supertrain.navigator.presentation.hello.HelloFragment
 
 class EditViewModel(
     private val navigator: Navigator,
@@ -28,8 +27,7 @@ class EditViewModel(
         navigator.goBack(message)
     }
 
-    fun onCancelPressed(message: String) {
+    fun onCancelPressed() {
         navigator.goBack()
     }
-
 }

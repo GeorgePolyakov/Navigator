@@ -7,19 +7,18 @@ import android.view.View
 import android.view.ViewGroup
 import com.supertrain.navigator.R
 import com.supertrain.navigator.databinding.FragmentHelloBinding
+import com.supertrain.navigator.presentation.base.BaseFragment
 import com.supertrain.navigator.presentation.edit.EditFragment
 import com.supertrain.navigator.presentation.base.BaseScreen
+import com.supertrain.navigator.presentation.base.screenViewModel
 
-class HelloFragment : Fragment() {
+class HelloFragment : BaseFragment() {
 
     class Screen : BaseScreen
 
+    override val viewModel by screenViewModel<HelloViewModel>()
+
     private var binding:FragmentHelloBinding?= null
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -31,10 +30,11 @@ class HelloFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding?.editButton?.setOnClickListener {
-            parentFragmentManager.beginTransaction()
-                .replace(R.id.fragmentContainer, EditFragment())
-                .commit()
+
+        binding?.editButton?.setOnClickListener { viewModel.onEditPressed() }
+
+        viewModel.currentMessageLiveData.observe(viewLifecycleOwner) {
+            binding?.helloTextView?.text = it
         }
     }
 
