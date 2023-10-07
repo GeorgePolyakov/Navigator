@@ -1,4 +1,4 @@
-package com.supertrain.navigator.presentation
+package com.supertrain.navigator.nav
 
 import androidx.annotation.StringRes
 import com.supertrain.navigator.presentation.base.BaseScreen
