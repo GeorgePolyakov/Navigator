@@ -17,7 +17,7 @@ class MainNavigator(
 ) : AndroidViewModel(application), Navigator {
 
     private val argument = "ARGS"
-    val whenActivityActive = MainActivityActions() // lambda type (MainActivity) -> Unit
+    var whenActivityActive = MainActivityActions() // lambda type (MainActivity) -> Unit
 
     private val _result = MutableLiveData<Event<Any>>()
     val resultLiveData: LiveData<Event<Any>> = _result
@@ -44,7 +44,7 @@ class MainNavigator(
         return getApplication<Application>().getString(messageRes)
     }
 
-    private fun launchFragment(
+     fun launchFragment(
         activity: MainActivity,
         screen: BaseScreen,
         addToBackStack: Boolean = true
