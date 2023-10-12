@@ -7,9 +7,10 @@ import android.view.ViewGroup
 import com.supertrain.navigator.databinding.FragmentEditBinding
 import com.supertrain.navigator.presentation.base.BaseFragment
 import com.supertrain.navigator.presentation.base.BaseScreen
+import com.supertrain.navigator.presentation.base.HasScreenTitle
 import com.supertrain.navigator.presentation.base.screenViewModel
 
-class EditFragment : BaseFragment() {
+class EditFragment : BaseFragment(), HasScreenTitle {
 
     class Screen(
         val initialValue: String
@@ -48,4 +49,6 @@ class EditFragment : BaseFragment() {
         super.onDestroy()
         binding = null
     }
+
+    override fun getScreenTitle(): String = "Edit Fragment"
 }

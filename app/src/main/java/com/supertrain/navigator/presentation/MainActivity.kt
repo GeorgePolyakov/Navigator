@@ -28,7 +28,6 @@ class MainActivity : AppCompatActivity() {
         if (savedInstanceState == null) {
            navigator.launchFragment(this, HelloFragment.Screen(), false)
         }
-        supportFragmentManager.registerFragmentLifecycleCallbacks(fragmentCallback, false)
     }
 
     override fun onSupportNavigateUp() : Boolean {
@@ -48,41 +47,5 @@ class MainActivity : AppCompatActivity() {
 
     override fun onDestroy() {
         super.onDestroy()
-        supportFragmentManager.unregisterFragmentLifecycleCallbacks(fragmentCallback)
-    }
-
-    private val fragmentCallback = object : FragmentManager.FragmentLifecycleCallbacks() {
-
-        override fun onFragmentAttached(fm: FragmentManager, f: Fragment, context: Context) {
-            super.onFragmentAttached(fm, f, context)
-
-            Log.d("fragmentCallback", " fragment ${f.javaClass.name} was attached")
-        }
-
-        override fun onFragmentViewCreated(
-            fm: FragmentManager,
-            f: Fragment,
-            v: View,
-            savedInstanceState: Bundle?
-        ) {
-            Log.d("fragmentCallback", "fragment backStackCount ${supportFragmentManager.backStackEntryCount}")
-            Log.d("fragmentCallback", "current fragment is  ${f.javaClass.name}")
-            if(supportFragmentManager.backStackEntryCount > 0) {
-                supportActionBar?.setDisplayHomeAsUpEnabled(true) // showBackArrow on toolbar
-            } else {
-                supportActionBar?.setDisplayHomeAsUpEnabled(false) // hide back arrow  on toolbar
-            }
-
-            val result = navigator.resultLiveData.value?.getValue() ?: return
-            if(f is BaseFragment){
-                f.viewModel.onResult(result) // trigger liveData withResult
-            }
-        }
-
-        override fun onFragmentDetached(fm: FragmentManager, f: Fragment) {
-            super.onFragmentDetached(fm, f)
-            Log.d("fragmentCallback", " fragment ${f.javaClass.name} was detached")
-
-        }
     }
 }
