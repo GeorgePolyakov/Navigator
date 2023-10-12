@@ -36,7 +36,7 @@ class EditFragment : BaseFragment() {
         }
 
         binding?.saveButton?.setOnClickListener {
-            viewModel.onSavePressed(binding?.valueEditText.toString())
+            viewModel.onSavePressed(binding?.valueEditText?.text.toString())
         }
 
         binding?.cancelButton?.setOnClickListener {

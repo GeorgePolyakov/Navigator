@@ -30,4 +30,8 @@ class EditViewModel(
     fun onCancelPressed() {
         navigator.goBack()
     }
+
+    override fun onCleared() {
+        super.onCleared()
+    }
 }

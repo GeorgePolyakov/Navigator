@@ -7,9 +7,6 @@ interface Navigator {
 
     fun launch(screen: BaseScreen)
 
-    fun goBack(result:Any? = null)
-    
-    fun toast(@StringRes messageRes: Int)
+    fun goBack(result: Any? = null)
 
-    fun getString(@StringRes messageRes: Int) : String
 }

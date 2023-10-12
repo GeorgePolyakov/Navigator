@@ -4,6 +4,7 @@ import com.supertrain.navigator.presentation.MainActivity
 
 typealias MainActivityAction = (MainActivity) -> Unit
 
+
 class MainActivityActions {
 
     private val actions = mutableListOf<MainActivityAction>()
@@ -12,7 +13,7 @@ class MainActivityActions {
         set(activity){
             field = activity
             if(activity!=null){
-                actions.forEach {
+                actions.forEach { // if resource(MainActivity) is available we should execute delayed actions
                     it(activity)
                 }
                 actions.clear()
