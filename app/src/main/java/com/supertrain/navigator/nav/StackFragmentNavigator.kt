@@ -14,6 +14,9 @@ import com.supertrain.navigator.presentation.Event
 import com.supertrain.navigator.presentation.base.BaseFragment
 import com.supertrain.navigator.presentation.base.BaseScreen
 import com.supertrain.navigator.presentation.base.HasScreenTitle
+import com.supertrain.navigator.presentation.edit.EditFragment
+import com.supertrain.navigator.presentation.edit.EditViewModel
+import com.supertrain.navigator.presentation.hello.HelloFragment
 
 class StackFragmentNavigator(
     private val activity: AppCompatActivity,
@@ -35,6 +38,12 @@ class StackFragmentNavigator(
     }
 
     fun onCreate(savedInstanceState: Bundle?) {
+        if(savedInstanceState == null){
+            launchFragment(
+                screen = HelloFragment.Screen(),
+                false
+            )
+        }
         activity.supportFragmentManager.registerFragmentLifecycleCallbacks(fragmentCallback, false)
     }
 

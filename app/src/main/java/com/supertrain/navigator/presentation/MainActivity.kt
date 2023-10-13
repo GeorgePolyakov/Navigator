@@ -9,15 +9,20 @@ import androidx.activity.viewModels
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.ViewModelProvider
+import com.supertrain.navigator.R
 import com.supertrain.navigator.databinding.ActivityMainBinding
+import com.supertrain.navigator.nav.ActivityScopeViewModel
 import com.supertrain.navigator.nav.MainNavigator
+import com.supertrain.navigator.nav.StackFragmentNavigator
 import com.supertrain.navigator.presentation.base.BaseFragment
 import com.supertrain.navigator.presentation.base.ViewModelFactory
 import com.supertrain.navigator.presentation.hello.HelloFragment
 
 class MainActivity : AppCompatActivity() {
 
-    private val navigator by viewModels<MainNavigator> {
+    private lateinit var navigator : StackFragmentNavigator
+
+    private val activityViewModel by viewModels<ActivityScopeViewModel> {
         ViewModelProvider.AndroidViewModelFactory(application)
         }
 
@@ -25,9 +30,13 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         val binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        if (savedInstanceState == null) {
-           navigator.launchFragment(this, HelloFragment.Screen(), false)
-        }
+
+        navigator = StackFragmentNavigator(
+            activity = this,
+            R.id.fragmentContainer
+        ) { HelloFragment.Screen() }
+
+        navigator.onCreate(savedInstanceState) // we may not call callback methodes we can use lifecycle owner
     }
 
     override fun onSupportNavigateUp() : Boolean {
@@ -37,7 +46,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-        navigator.whenActivityActive.mainActivity = this
+        activityViewModel.navigator.setTargetNavigator(navigator) // init target navigator
     }
 
     override fun onPause() {
@@ -45,7 +54,8 @@ class MainActivity : AppCompatActivity() {
         navigator.whenActivityActive.mainActivity = null
     }
 
-    override fun onDestroy() {
+    override fun onDestroy() { // we may not call callback methodes we can use lifecycle owner
+        navigator.onDestroy()
         super.onDestroy()
     }
 }
